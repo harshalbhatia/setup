@@ -58,7 +58,13 @@ sudo apt-get install -y libpq-dev
 
 # zsh and prezto
 sudo apt-get install -y zsh
-# Is it possible to install zsh, then switch to zsh from within bash and then install prezto?
+git clone --recursive https://github.com/sorin-ionescu/prezto.git "$HOME/.zprezto"
+ 
+shopt -s extglob
+for rcfile in $HOME/.zprezto/runcoms/!(README.md); do
+  ln -s "$rcfile" "$HOME/.$(basename $rcfile)"
+done
+# Is it possible to zsh from within bash and then configure prezto?
 
 #Ask which the user wants as the default shell?
 
