@@ -66,6 +66,10 @@ for rcfile in $HOME/.zprezto/runcoms/!(README.md); do
 done
 # Is it possible to zsh from within bash and then configure prezto?
 
+# Qbittorrent
+sudo add-apt-repository ppa:qbittorrent-team/qbittorrent-stable
+sudo apt update && sudo apt install qbittorrent
+
 #Ask which the user wants as the default shell?
 
 # To-do list of things to be done manually...
