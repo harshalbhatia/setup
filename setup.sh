@@ -65,6 +65,22 @@ for rcfile in $HOME/.zprezto/runcoms/!(README.md); do
   ln -s "$rcfile" "$HOME/.$(basename $rcfile)"
 done
 # Is it possible to zsh from within bash and then configure prezto?
+# zstyle ':prezto:load' pmodule \
+#   'environment' \
+#   'terminal' \
+#   'editor' \
+#   'history' \
+#   'directory' \
+#   'spectrum' \
+#   'utility' \
+#   'autosuggestions' \
+#   'history-substring-search' \
+#   'syntax-highlighting' \
+#   'completion' \
+#   'prompt' \
+#   'git'
+
+
 
 # Qbittorrent
 sudo add-apt-repository ppa:qbittorrent-team/qbittorrent-stable
