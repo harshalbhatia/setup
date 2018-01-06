@@ -6,34 +6,26 @@ sudo apt-get -y upgrade
 
 # Install Essentials
 sudo apt-get update
-# Vim
-sudo apt-get install -y vim
-# Git
-sudo apt-get install -y git
-# Curl
-sudo apt-get install -y curl
+sudo apt-get install -y vim git curl vlc
 # Chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i ./google-chrome*.deb
 sudo apt-get install -f -y
-# Npm and node
-cd ~
-curl -sL https://deb.nodesource.com/setup_6.x -o nodesource_setup.sh
-sudo bash nodesource_setup.sh
-rm nodesource_setup.sh
-sudo apt-get install -y nodejs
-sudo apt-get install -y build-essential
+rm -rf ./google-chrome*.deb
+# Nvm
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 # Sublime
-sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
+wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+sudo apt-get install -y apt-transport-https
+echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
 sudo apt-get update
-sudo apt-get install -y sublime-text-installer
+sudo apt-get install -y sublime-text
 # Flux-gui
 sudo add-apt-repository -y ppa:nathan-renniewaldock/flux
 sudo apt-get update
 sudo apt-get install -y fluxgui
-# VLC
-sudo apt-get install -y vlc
-
 
 # InstallOptionals (ask for each, but in the beginning itself)
 # Synapse - shortcut launcher
@@ -55,10 +47,15 @@ sudo apt-get install -y libpq-dev
 # Neo4j
 # Atom
 # VS Code
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+sudo apt-get update
+sudo apt-get install -y code
 
-# zsh and prezto
+# oh-my-zsh
 sudo apt-get install -y zsh
-git clone --recursive https://github.com/sorin-ionescu/prezto.git "$HOME/.zprezto"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
  
 shopt -s extglob
 for rcfile in $HOME/.zprezto/runcoms/!(README.md); do
