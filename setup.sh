@@ -3,10 +3,9 @@
 # Check for and install updates
 sudo apt-get update
 sudo apt-get -y upgrade
-
 # Install Essentials
 sudo apt-get update
-sudo apt-get install -y vim git curl vlc
+sudo apt-get install -y vim git curl vlc build-essential
 # Chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i ./google-chrome*.deb
